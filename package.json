@@ -1,0 +1,34 @@
+{
+  "name": "reactpre",
+  "version": "1.0.0",
+  "description": "react学习项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack -p",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --devtool eval --progress --color --hot --inline --content-base ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/applye/React.git"
+  },
+  "author": "chengzi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/applye/React/issues"
+  },
+  "homepage": "https://github.com/applye/React#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}
