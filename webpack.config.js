@@ -27,6 +27,10 @@ const config = {
             test:/\.css$/,
             // loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' //本地化使用
             loader: 'style-loader!css-loader'
+        },
+        {
+            test:/\.less$/,
+            loader: 'style-loader!css-loader!less-loader'
         }
         ]
     }

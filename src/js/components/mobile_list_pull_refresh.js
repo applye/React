@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row, Col} from 'antd';
 import {Router, Route, Link, browserHistory} from 'react-router';
-import Tloader from 'react-touch-loader';
+import ReactPullRefresh from 'react-pull-to-refresh';
 /**
  * 
  * 
@@ -13,11 +13,8 @@ export default class PcNewsBlock extends React.Component {
     constructor() {
         super();
         this.state = {
-            news: '',
-            count: 5,
-            hasMore:0,
-            initializing:1,
-            refreshedAt: Date.now()
+            news: ''
+      
         }
     }
 
@@ -30,39 +27,21 @@ export default class PcNewsBlock extends React.Component {
         .then(json=>this.setState({news:json}));
     }
 
-    
-    componentDidMount() {
-        setTimeout(()=> {
-            this.setState({
-                hasMore: 1,
-                initializing:2
-            })
-        }, 2e3);
-    }
-    
-
-    loadMore = (resolve) => {      
-        setTimeout(()=> {
-            let count = this.state.count + 5;
-            this.setState({count: count});
-            var myFetchOption = {
-                method: 'GET'
-            };
-            fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type="+this.props.type+"&count="+this.state.count, myFetchOption)
-            .then(response =>  response.json())
-            .then(json => {
-                this.setState({news:json});
-            });
-            this.setState({
-                hasMore: count>0 && count <50
-            });
+    handleRefresh(resolve) {
+        var myFetchOption = {
+            method: 'GET'
+        };
+        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=yule&count="+20, myFetchOption)
+        .then(respone=> respone.json())
+        .then(json=> {
+            this.setState({news:json});
             resolve();
-        }, 2e3);
+        });
     }
+
 
     render() {
-        const {news, hasMore, initializing, refreshedAt} = this.state;
-    
+        const {news} = this.state;    
         const newList = news.length ? news.map((newItem, index)=> (
             <section key={index} className="m_article list-item special_section clearfix">
                 <Link to={`details/${newItem.uniquekey}`}>
@@ -88,9 +67,10 @@ export default class PcNewsBlock extends React.Component {
             <div>
                 <Row>
                     <Col span={24}>
-                        <Tloader className="main" onLoadMore={this.loadMore} hasMore={hasMore} initializing={initializing}>
-                            {newList}
-                        </Tloader>                    
+                        <ReactPullRefresh onRefresh={this.handleRefresh.bind(this)} style={{textAlign: 'center'}}>
+                            <span className="genericon genericon-next"></span>
+                            <div>{newList}</div>
+                        </ReactPullRefresh>                              
                     </Col>
                 </Row>
             </div>

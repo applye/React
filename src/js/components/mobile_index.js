@@ -2,6 +2,7 @@ import React from 'react'
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'
 import MobileList from './mobile_list'
+import MobileListPullRefresh from './mobile_list_pull_refresh'
 import {Tabs, Carousel} from 'antd'
 const TabPane = Tabs.TabPane;
 /**
@@ -32,13 +33,13 @@ export default class MobileIndex extends React.Component {
                             <div><img src="./src/images/carousel_3.jpg"/></div>
                             <div><img src="./src/images/carousel_4.jpg"/></div>                                   
                         </Carousel>
-                        <MobileList count={20} type="top"/>
+                        <MobileList count={5} type="top"/>
                     </TabPane>
                     <TabPane key="2" tab="社会">
                         <MobileList count={20} type="shehui"/>
                     </TabPane>
                     <TabPane key="3" tab="国内">
-                        <MobileList count={20} type="guonei"/>
+                        <MobileListPullRefresh count={20} type="guonei"/>
                     </TabPane>
                     <TabPane key="4" tab="国际">
                         <MobileList count={20} type="guoji"/>
