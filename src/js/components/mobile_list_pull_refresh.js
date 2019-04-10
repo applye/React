@@ -22,7 +22,7 @@ export default class PcNewsBlock extends React.Component {
         var myFetchOption = {
             method: 'GET'
         };
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type="+this.props.type+"&count="+this.props.count, myFetchOption)
+        fetch("//newsapi.gugujiankong.com/Handler.ashx?action=getnews&type="+this.props.type+"&count="+this.props.count, myFetchOption)
         .then(respone=> respone.json())
         .then(json=>this.setState({news:json}));
     }
@@ -31,7 +31,7 @@ export default class PcNewsBlock extends React.Component {
         var myFetchOption = {
             method: 'GET'
         };
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=yule&count="+20, myFetchOption)
+        fetch("//newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=yule&count="+20, myFetchOption)
         .then(respone=> respone.json())
         .then(json=> {
             this.setState({news:json});

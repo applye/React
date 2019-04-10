@@ -33,7 +33,7 @@ class CommonComments extends React.Component {
         let myFetchOption = {
             method: 'GET'
         };
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey="+this.props.uniquekey, myFetchOption)
+        fetch("//newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey="+this.props.uniquekey, myFetchOption)
         .then(response => response.json())
         .then(json => {
             this.setState({
@@ -50,7 +50,7 @@ class CommonComments extends React.Component {
         };
         var forData = this.props.form.getFieldsValue();
         console.log(forData);
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid="+localStorage.userid+"&uniquekey="+this.props.uniquekey+"&commnet="+forData.remark, myFetchOption)
+        fetch("//newsapi.gugujiankong.com/Handler.ashx?action=comment&userid="+localStorage.userid+"&uniquekey="+this.props.uniquekey+"&commnet="+forData.remark, myFetchOption)
         .then(response => response.json())
         .then(json => {
             message.success("提交评论成功!");
@@ -62,7 +62,7 @@ class CommonComments extends React.Component {
         let myFetchOption = {
             method: 'GET'
         }
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid="+localStorage.userid+"&uniquekey="+ this.props.uniquekey, myFetchOption)
+        fetch("//newsapi.gugujiankong.com/Handler.ashx?action=uc&userid="+localStorage.userid+"&uniquekey="+ this.props.uniquekey, myFetchOption)
         .then(response => response.json())
         .then(json => {
             //收藏成功
